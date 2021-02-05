@@ -1,0 +1,31 @@
+.search-form
+  display: -webkit-box /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+  display: -moz-box /* 老版本语法: Firefox (buggy) */
+  display: -ms-flexbox /* 混合版本语法: IE 10 */
+  display: -webkit-flex /* 新版本语法: Chrome 21+ */
+  display: flex /* 新版本语法: Opera 12.1, Firefox 22+ */
+  background-color: #ffffff
+
+  .search-form__actions
+    font-size: 0
+    flex: 0 0 auto
+    .ant-btn
+      margin-right: 8px
+      margin-bottom: 12px
+      margin-bottom: 16px
+
+  .search-form__form
+    flex: 1 1 auto
+    // text-align: right
+    font-size: 0
+    .ant-form-inline
+      float: right
+    .ant-form-item
+      margin-left: 8px
+      margin-right: 0
+      margin-bottom: 16px
+      display: inline-block
+
+.search-form__btn
+  float: right
+  margin-right: 0
