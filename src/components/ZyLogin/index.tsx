@@ -4,9 +4,14 @@ import {
   Input,
   Button,
   ConfigProvider,
+  Row,
+  Col,
 } from 'antd'
+import moment from 'moment'
+import backgroundImage from './image/login-bg.png'
 import logo from './image/login-logo.png'
 import './index.sass'
+import { KeyOutlined, SafetyOutlined, UserOutlined } from '@ant-design/icons'
 
 interface FormData {
   username: string
@@ -21,6 +26,8 @@ interface Props {
   onCaptchaChange: () => Promise<string>
   onFinish: (payload: FormData) => void
   loading?: boolean
+  backgroundImage?: string
+  extraRender?: React.ReactNode | React.ReactNode[]
 }
 
 const emptyImg = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
@@ -53,47 +60,65 @@ const Login :React.FC<Props> = (props) => {
 
   return (
     <ConfigProvider input={{ autoComplete: 'off' }}>
-      <div className="zy-login">
+      <div
+        className="zy-login"
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}
+      >
         <div className="login-logo">
           <img className="logo-image" src={ logo } alt="logo" />
           <span className="logo-title">{ title }</span>
         </div>
         <div className="login-container">
-          <div className="login-container-title">欢迎登录</div>
-          <Form className="login-form" onFinish={ onFinish }>
+          <div className="login-container-title">登录</div>
+          <Form className="login-form" size="large" onFinish={ onFinish }>
             <Form.Item
               name="username"
               rules={ rules.username }
             >
-              <Input bordered={ false } prefix={ <span className="input-label">用户名</span> } />
+              <Input prefix={ <UserOutlined /> } placeholder="账号" />
             </Form.Item>
             <Form.Item
               name="password"
               rules={ rules.password }
             >
-              <Input.Password bordered={ false } prefix={ <span className="input-label">密码</span> } />
+              <Input.Password  prefix={ <KeyOutlined /> } placeholder="密码" />
             </Form.Item>
-            <Form.Item
-              name="captchaCode"
-              rules={ rules.captchaCode }
-            >
-              <Input
-                prefix={ <span className="input-label">验证码</span> }
-                bordered={false}
-                suffix={ <img onClick={ getCaptcha } src={ captchaImage } alt="code" className="random-img" /> }
-              />
-            </Form.Item>
+            <Row>
+              <Col span={ 14 }>
+                <Form.Item
+                  name="captchaCode"
+                  rules={ rules.captchaCode }
+                >
+                  <Input prefix={ <SafetyOutlined /> } placeholder="验证码" />
+                </Form.Item>
+              </Col>
+              <Col span={ 10 }>
+                <div className="login-captcha">
+                  <dl
+                    className="login-captcha-image"
+                    onClick={ getCaptcha }
+                    style={{
+                      backgroundImage: `url(${captchaImage})`,
+                      height: '40px',
+                      backgroundPosition: 'center',
+                    }}
+                  />
+                </div>
+              </Col>
+            </Row>
+
             <Form.Item style={{ marginBottom: 0 }}>
-              <Button type="primary" htmlType="submit" shape="round" block className="login-submit" loading={ loading }>
+              <Button type="primary" htmlType="submit" block className="login-submit" loading={ loading }>
                 登录
               </Button>
             </Form.Item>
           </Form>
           <div className="login-error"><span>{ message }</span></div>
+          <div className="login-extra">{ props.extraRender }</div>
         </div>
-        <footer className="footer-copyright">
-          版权所有@浙江正元智慧科技股份有限公司
-        </footer>
+        <footer className="footer-copyright">Copyright { moment().format('YYYY') } 正元智慧</footer>
       </div>
     </ConfigProvider>
   )

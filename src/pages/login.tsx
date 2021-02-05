@@ -103,6 +103,7 @@ const Login :React.FC = () => {
       onCaptchaChange={ getCaptcha }
       onFinish={ onFinish }
       message={ getErrorMessage() }
+      extraRender={(<span className="pointer">找回密码</span>)}
     />
   )
 }

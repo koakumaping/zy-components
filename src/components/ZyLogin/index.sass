@@ -1,94 +1,56 @@
 .zy-login
-  background-image: url('./image/login-bg.png')
   width: 100vw
   background-size: cover
   height: 100vh
   position: relative
-  .ant-form
-    .ant-form-item-has-error .ant-input-affix-wrapper-focused
-      border-color: none
-      box-shadow: none
-
   .login-logo
     height: 40px
     display: flex
     align-items: center
     position: absolute
-    top: 10px
-    left: 10px
+    top: 48px
+    left: 48px
     .logo-image
-      height: 40px
+      height: 56px
       display: block
-      margin-right: 20px
+      margin-right: 8px
     .logo-title
-      font-size: 25px
+      font-size: 26px
       color: #fff
       display: flex
       align-items: center
-      &::before
-        content: ' '
-        width: 1px
-        height: 25px
-        display: inline-block
-        background: #fff
-        margin-right: 20px
-        font-family: "Microsoft YaHei UI"
   .login-container
-    padding: 0 20px 20px 20px
-    width: 400px
+    padding: 22px 24px
+    width: 336px
     position: absolute
     top: 50%
     left: 60%
     transform: translateY(-50%)
-    background-color: rgba(0, 0, 0, 0.5)
+    background-color: rgba(0, 0, 0, 0.4)
+    .login-container-title
+      color: rgba(255, 255, 255, 0.85)
+      line-height: 42px
+      font-size: 24px
+      padding-bottom: 18px
+    .login-captcha
+      padding-left: 16px
+      cursor: pointer
+    .login-submit
+      font-size: 18px
     .login-error
-      height: 20px
       line-height: 20px
       text-align: center
+      padding-top: 8px
       color: red
-    .login-container-title
-      color: #fff
-      text-align: center
-      line-height: 100px
-      font-size: 25px
-    .login-form
-      .input-label
-        display: inline-block
-        width: 50px
-        color: #fff
-        height: 38px
-        line-height: 38px
-        text-align: justify
-        &::after
-          display: inline-block
-          width: 100%
-          content: ''
-      .ant-input-affix-wrapper
-        border-bottom: 1px solid #fff
-        background: none
-        input
-          -webkit-text-fill-color: white
-          -webkit-text-fill-size: 14px
-        input:-webkit-autofill
-          transition: background-color 5000s ease-in-out 0s
-        .ant-input-prefix
-          margin-right: 20px
-        .ant-input
-          background: none
-          color: #fff
-        .ant-input-password-icon
-          color: #fff
-      .login-submit
-        height: 50px
-        font-size: 17px
-      .ant-form-item
-        margin-bottom: 40px
-      .ant-form-item-explain
-        height: 40px
-        margin-bottom: -40px
+    .login-extra
+      color: rgba(255, 255, 255, 0.85)
+      font-size: 16px
+      font-weight: 400
+      line-height: 21px
   .footer-copyright
     position: absolute
     left: 50%
     transform: translateX(-50%)
     bottom: 30px
-    color: #d9d9d9
+    color: rgba(255, 255, 255, 0.65)
+    font-size: 16px
