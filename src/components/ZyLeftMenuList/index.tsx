@@ -9,7 +9,7 @@ const ZyLeftMenuList: React.FC<Props> = (props) => {
   return (
     <div className="left-menu-list">
       <dl className="left-menu-warp">
-        <dt className="left-menu-title">服务开发商</dt>
+        <dt className="left-menu-title">{ props.title }</dt>
         <ul>
           { props.children }
         </ul>
