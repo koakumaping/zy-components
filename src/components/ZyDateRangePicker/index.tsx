@@ -4,7 +4,7 @@ import moment, { Moment } from 'moment'
 
 interface Props {
   value?: [string, string]
-  onChange?: (value: string[] | null) => void
+  onChange?: (value: [string, string] | null) => void
   style?: CSSProperties
   format?: string
   disabledDate?: (payload: Moment) => boolean
