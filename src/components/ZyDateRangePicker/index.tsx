@@ -5,12 +5,8 @@ import moment, { Moment } from 'moment'
 
 declare type ValueItem = [string, string] | null
 interface Props {
-  value?: [string, string]
-<<<<<<< HEAD
+  value?: ValueItem
   onChange?: (value: ValueItem) => void
-=======
-  onChange?: (value: [string, string] | null) => void
->>>>>>> 6097afdfaddb30879552ced2a8dcfe9d737dd529
   style?: CSSProperties
   format?: string
   disabledDate?: (payload: Moment) => boolean
