@@ -10,7 +10,7 @@ interface Props {
   format?: string
   disabledDate?: (payload: Moment) => boolean
   placeholder?: string
-  picker?: "time" | "date" | "week" | "month" | "quarter" | "year" | undefined
+  picker?: 'time' | 'date' | 'week' | 'month' | 'quarter' | 'year' | undefined
 }
 
 const ZyDatePicker: React.FC<Props> = (props) => {
