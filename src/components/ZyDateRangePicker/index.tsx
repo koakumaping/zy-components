@@ -3,7 +3,7 @@ import { DatePicker } from 'antd'
 import moment, { Moment } from 'moment'
 
 interface Props {
-  value?: string[]
+  value?: [string, string]
   onChange?: (value: string[] | null) => void
   style?: CSSProperties
   format?: string
