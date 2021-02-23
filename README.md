@@ -1,15 +1,29 @@
-# umi project
+# react components
 
 ## Getting Started
+
+Add .npmrc for root,
+
+```bash
+$ touch .npmrc
+$ echo '@zy:registry=http://172.16.4.106:4873' > .npmrc
+```
 
 Install dependencies,
 
 ```bash
-$ yarn
+$ yarn add @zy/components-react
+$ npm install @zy/components-react
 ```
 
-Start the dev server,
+Use,
+```js
+import React from 'react'
+import { ZyLogin } from '@zy/components-react'
 
-```bash
-$ yarn start
+const Login :React.FC = () => {
+  return (
+    <zyLogin />
+  )
+}
 ```
