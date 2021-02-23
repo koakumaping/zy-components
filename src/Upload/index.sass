@@ -3,3 +3,11 @@
   border-style: solid
 .ant-form-item-has-error .ant-upload.ant-upload-select-picture-card
   border-color: #ff4d4f
+
+// 防止logo过长过宽溢出
+.ant-upload,
+.ant-form-item
+  img[alt=avatar]
+    width: 100%
+    max-width: 102px
+    max-height: 102px

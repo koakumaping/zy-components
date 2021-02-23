@@ -1,6 +1,6 @@
-import React from 'react';
-import { Menu, Layout } from 'antd';
-import store from 'store';
+import React from 'react'
+import { Menu, Layout } from 'antd'
+import store from 'store'
 import {
   AppstoreOutlined,
   DashboardOutlined,
@@ -12,22 +12,22 @@ import {
   AreaChartOutlined,
   BlockOutlined,
   AlertOutlined,
-} from '@ant-design/icons';
-import { useModel, history } from 'umi';
+} from '@ant-design/icons'
+import { useModel, history } from 'umi'
 
-import './index.sass';
+import './index.sass'
 
 interface IconType {
-  [key: string]: any;
+  [key: string]: any
 }
 
-const { Sider } = Layout;
-const { SubMenu } = Menu;
+const { Sider } = Layout
+const { SubMenu } = Menu
 
 function onSelect(payload: any) {
-  const path = payload.item.props['data-path'];
-  store.set('currentMenu', payload.key);
-  if (path) history.push(path);
+  const path = payload.item.props['data-path']
+  store.set('currentMenu', payload.key)
+  if (path) history.push(path)
 }
 
 const icons: IconType = {
@@ -41,18 +41,18 @@ const icons: IconType = {
   AreaChartOutlined: AreaChartOutlined,
   BlockOutlined: BlockOutlined,
   AlertOutlined: AlertOutlined,
-};
+}
 
 function getIcon(name: string | void): any {
-  if (!name) return null;
-  const Icon: any = icons[name] || DashboardOutlined;
-  return <Icon />;
+  if (!name) return null
+  const Icon: any = icons[name] || DashboardOutlined
+  return <Icon />
 }
 
 const ZyLeftSide: React.FC = () => {
-  const currentMenu = store.get('currentMenu');
-  const { menuList, getMenuList, pList } = useModel('menu');
-  if (pList.length === 0) getMenuList();
+  const currentMenu = store.get('currentMenu')
+  const { menuList, getMenuList, pList } = useModel('menu')
+  if (pList.length === 0) getMenuList()
 
   return (
     <Sider style={{ overflow: 'auto' }} width={208} collapsible={true}>
@@ -80,10 +80,10 @@ const ZyLeftSide: React.FC = () => {
                     >
                       {submenu.label}
                     </Menu.Item>
-                  );
+                  )
                 })}
               </SubMenu>
-            );
+            )
           return (
             <Menu.Item
               key={menu.key}
@@ -94,11 +94,11 @@ const ZyLeftSide: React.FC = () => {
             >
               {menu.label}
             </Menu.Item>
-          );
+          )
         })}
       </Menu>
     </Sider>
-  );
-};
+  )
+}
 
-export default ZyLeftSide;
+export default ZyLeftSide

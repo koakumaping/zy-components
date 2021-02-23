@@ -1,18 +1,7 @@
 {
   "name": "@zy/components-react",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "main": "src/index.ts",
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,jsx,less,md,json}": [
-      "prettier --write"
-    ],
-    "*.ts?(x)": [
-      "prettier --parser=typescript --write"
-    ]
-  },
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
     "@ant-design/pro-layout": "^5.0.12",

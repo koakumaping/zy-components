@@ -34,7 +34,7 @@ import { ZyLogin } from '@zy/components-react'
 
 const Login :React.FC = () => {
   return (
-    <zyLogin />
+    <ZyLogin />
   )
 }
 ```
