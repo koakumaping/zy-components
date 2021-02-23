@@ -16,6 +16,17 @@ $ yarn add @zy/components-react
 $ npm install @zy/components-react
 ```
 
+Change umi setting in .umirc.ts,
+
+```js
+export default defineConfig({
+  nodeModulesTransform: {
+    type: 'none',
+    exclude: ['evian', '@zy/components-react'],
+  },
+})
+```
+
 Use,
 ```js
 import React from 'react'
