@@ -6,7 +6,7 @@ Add .npmrc for root,
 
 ```bash
 $ touch .npmrc
-$ echo '@zy:registry=http://172.16.4.106:4873' > .npmrc
+$ echo '@zy:registry=http://172.16.5.240/' > .npmrc
 ```
 
 Install dependencies,
