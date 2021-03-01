@@ -1,3 +1,4 @@
+import './index.ass'
 import ZyDatePicker from './DatePicker'
 import ZyDateRangePicker from './DateRangePicker'
 import ZyUpload from './Upload'
