@@ -2,17 +2,23 @@ import React from 'react'
 import './index.sass'
 
 interface Props {
-  title: string
+  title: string | React.ReactNode | React.ReactNode[]
+  extra: string | React.ReactNode | React.ReactNode[]
   children: React.ReactNode | React.ReactNode[]
 }
 
 const ZyLeftMenuList: React.FC<Props> = props => {
   return (
     <div className="left-menu-list">
-      <dl className="left-menu-warp">
-        <dt className="left-menu-title">{ props.title }</dt>
+      <div className="left-menu-warp">
+        <div className="left-menu-head">
+          <div className="left-menu-head-wrapper">
+            <div className="left-menu-head-title">{ props.title }</div>
+            <div className="left-menu-head-extra">{ props.extra }</div>
+          </div>
+        </div>
         <ul>{ props.children }</ul>
-      </dl>
+      </div>
     </div>
   )
 }
