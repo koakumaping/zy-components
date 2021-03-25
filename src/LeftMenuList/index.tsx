@@ -2,8 +2,8 @@ import React from 'react'
 import './index.sass'
 
 interface Props {
-  title: string | React.ReactNode | React.ReactNode[]
-  extra: string | React.ReactNode | React.ReactNode[]
+  title: string
+  extra: React.ReactNode | React.ReactNode[]
   children: React.ReactNode | React.ReactNode[]
 }
 
