@@ -9,6 +9,7 @@ import ZyLeftSide from './LeftSide'
 import ZySearchForm from './SearchForm'
 import ZyLogin from './Login'
 import ZyTable from './Table'
+import ZyModalconfirm from './Modalconfirm'
 
 export {
   ZyDatePicker,
@@ -21,4 +22,5 @@ export {
   ZySearchForm,
   ZyLogin,
   ZyTable,
+  ZyModalconfirm,
 }
