@@ -10,7 +10,7 @@ const ZyLeftSide: React.FC = props => {
   }
 
   return (
-    <Layout.Sider style={{ overflow: 'auto' }} width={208} trigger={null} collapsible collapsed={collapsed}>
+    <Layout.Sider style={{ overflow: 'auto', zIndex: 1 }} width={208} trigger={null} collapsible collapsed={collapsed}>
       {
         React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
           className: 'zy-side-trigger',
