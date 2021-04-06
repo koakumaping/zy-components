@@ -12,6 +12,7 @@ interface Props {
   disabledDate?: (payload: Moment) => boolean
   placeholder?: string
   picker?: 'time' | 'date' | 'week' | 'month' | 'quarter' | 'year' | undefined
+  allowClear?: boolean
 }
 
 const ZyDatePicker: React.FC<Props> = props => {
@@ -23,6 +24,7 @@ const ZyDatePicker: React.FC<Props> = props => {
     disabledDate,
     placeholder,
     picker,
+    allowClear,
   } = props
 
   const triggerChange = (changedValue: Moment | null) => {
@@ -35,12 +37,12 @@ const ZyDatePicker: React.FC<Props> = props => {
     <DatePicker
       value={ isEmpty(value) ? null : moment(value + '') }
       onChange={ triggerChange }
-      allowClear={ false }
       style= {style }
       format={ format }
       disabledDate={ disabledDate }
       placeholder={ placeholder }
       picker={ picker }
+      allowClear={ allowClear }
     />
   )
 }
