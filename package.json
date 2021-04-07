@@ -15,7 +15,7 @@
     "@umijs/test": "^3.2.16",
     "antd": "^4.8.4",
     "compression-webpack-plugin": "^6.0.4",
-    "evian": "^2.0.4",
+    "evian": "^2.0.5",
     "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
