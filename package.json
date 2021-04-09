@@ -1,6 +1,6 @@
 {
   "name": "@zy/components-react",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "main": "src/index.ts",
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
@@ -15,7 +15,7 @@
     "@umijs/test": "^3.2.16",
     "antd": "^4.8.4",
     "compression-webpack-plugin": "^6.0.4",
-    "evian": "^2.0.8",
+    "evian": "^2.0.9",
     "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
