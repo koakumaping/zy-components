@@ -54,7 +54,6 @@ const ZySearchForm = forwardRef((props: Props, ref) => {
     window.setTimeout(() => {
       if (formInstance) formInstance.resetFields()
     }, 80)
-    console.log('ZySearchForm' ,query)
     return query
   }, [history.location])
 
