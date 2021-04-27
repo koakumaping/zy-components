@@ -3,6 +3,7 @@ import React, {
   ReactNode,
   useImperativeHandle,
   forwardRef,
+  useEffect,
 } from 'react'
 import { history } from 'umi'
 import { Form, Button, FormItemProps } from 'antd'
@@ -36,16 +37,22 @@ interface Props {
   onFinish?: (values: FormData) => void
   children?: ReactNode | ReactNode[]
   render?: ReactNode | ReactNode[]
-  // ref?: string | ((instance: HTMLDivElement | null) => void) | React.RefObject<HTMLDivElement> | null | undefined
+  // 是否独立搜索区
+  discrete?: boolean
 }
 
 const ZySearchForm = forwardRef((props: Props, ref) => {
-  const { items, onFinish, children, render } = props
+  const { items, onFinish, children, render, discrete } = props
   const [formInstance] = Form.useForm()
+
+  // 是否独立搜索区
+  const isDiscrete = useMemo(() => {
+    return items?.length ? true : discrete ? true : render ? true : false
+  }, [ discrete ])
 
   const list = useMemo(() => {
     return items
-  }, [items])
+  }, [ items ])
 
   const searchQuery = useMemo(() => {
     const query = queryForm(history.location.query || {})
@@ -55,7 +62,7 @@ const ZySearchForm = forwardRef((props: Props, ref) => {
       if (formInstance) formInstance.resetFields()
     }, 80)
     return query
-  }, [history.location])
+  }, [ history.location ])
 
   // 此处注意useImperativeHandle方法的的第一个参数是目标元素的ref引用
   useImperativeHandle(ref, () => ({
@@ -69,38 +76,79 @@ const ZySearchForm = forwardRef((props: Props, ref) => {
   }))
 
   return (
-    <div className="search-form">
-      <div className="search-form__actions">{children}</div>
-      <div className="search-form__form">
-        <Form
-          layout="inline"
-          form={formInstance}
-          onFinish={onFinish}
-          initialValues={searchQuery}
-        >
-          {
-            list?.map(item => (
-              <Form.Item
-                name={item.dataIndex}
-                key={item.key || (item.dataIndex as string)}
-                rules={item.rules || []}
-                validateTrigger={['onChange', 'onBlur']}
-                style={{ minWidth: '80px' }}
+    <div className={ isDiscrete ? 'search-form discrete' : 'search-form' }>
+      {
+        isDiscrete ? (
+          <>
+            <div className="search-form__discrete">
+              <Form
+                layout="inline"
+                form={ formInstance }
+                onFinish={ onFinish }
+                initialValues={ searchQuery }
               >
-                {item.formItem}
-              </Form.Item>
-            ))
-          }
-          { render }
-          {
-            list?.length || render ? (
-              <Form.Item>
-                <Button type="primary" htmlType="submit">查询</Button>
-              </Form.Item>
-            ) : null
-          }
-        </Form>
-      </div>
+                {
+                  list?.map(item => (
+                    <Form.Item
+                      name={item.dataIndex}
+                      key={item.key || (item.dataIndex as string)}
+                      rules={item.rules || []}
+                      validateTrigger={['onChange', 'onBlur']}
+                      style={{ minWidth: '80px' }}
+                    >
+                      {item.formItem}
+                    </Form.Item>
+                  ))
+                }
+                { render }
+                {
+                  list?.length || render ? (
+                    <Form.Item>
+                      <Button type="primary" htmlType="submit">查询</Button>
+                    </Form.Item>
+                  ) : null
+                }
+              </Form>
+            </div>
+            <div className="search-form__spare"></div>
+          </>
+        ) : null
+      }
+      <div className="search-form__actions">{ children }</div>
+      {
+        isDiscrete ? null : (
+          <div className="search-form__form">
+            <Form
+              layout="inline"
+              form={formInstance}
+              onFinish={onFinish}
+              initialValues={searchQuery}
+            >
+              {
+                list?.map(item => (
+                  <Form.Item
+                    name={item.dataIndex}
+                    key={item.key || (item.dataIndex as string)}
+                    rules={item.rules || []}
+                    validateTrigger={['onChange', 'onBlur']}
+                    style={{ minWidth: '80px' }}
+                  >
+                    {item.formItem}
+                  </Form.Item>
+                ))
+              }
+              { render }
+              {
+                list?.length || render ? (
+                  <Form.Item>
+                    <Button type="primary" htmlType="submit">查询</Button>
+                  </Form.Item>
+                ) : null
+              }
+            </Form>
+          </div>
+        )
+      }
     </div>
   )
 })
