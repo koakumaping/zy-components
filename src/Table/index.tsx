@@ -17,7 +17,9 @@ const ZyTable: React.FC<ZyTableProps> = props => {
           <div className="pt-table-action clear">{ props.children }</div>
         ) : null
       }
-      <Table {...props} />
+      <div className="pt-table-instance">
+        <Table {...props} />
+      </div>
     </div>
   )
 }
