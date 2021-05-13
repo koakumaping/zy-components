@@ -3,7 +3,7 @@ import './index.sass'
 
 interface Props {
   title: string
-  extra: React.ReactNode | React.ReactNode[]
+  extra?: React.ReactNode | React.ReactNode[]
   children: React.ReactNode | React.ReactNode[]
 }
 
