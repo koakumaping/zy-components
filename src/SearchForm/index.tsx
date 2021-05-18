@@ -86,6 +86,7 @@ const ZySearchForm = forwardRef((props: Props, ref) => {
                 form={ formInstance }
                 onFinish={ onFinish }
                 initialValues={ searchQuery }
+                name="discrete"
               >
                 {
                   list?.map(item => (
@@ -123,6 +124,7 @@ const ZySearchForm = forwardRef((props: Props, ref) => {
               form={formInstance}
               onFinish={onFinish}
               initialValues={searchQuery}
+              name="inline"
             >
               {
                 list?.map(item => (
