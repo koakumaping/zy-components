@@ -3,7 +3,6 @@ import React, {
   ReactNode,
   useImperativeHandle,
   forwardRef,
-  useEffect,
 } from 'react'
 import { history } from 'umi'
 import { Form, Button, FormItemProps } from 'antd'
@@ -75,6 +74,10 @@ const ZySearchForm = forwardRef((props: Props, ref) => {
     },
   }))
 
+  const onReset = () => {
+    formInstance.resetFields()
+  }
+
   return (
     <div className={ isDiscrete ? 'search-form discrete' : 'search-form' }>
       {
@@ -104,9 +107,14 @@ const ZySearchForm = forwardRef((props: Props, ref) => {
                 { render }
                 {
                   list?.length || render ? (
-                    <Form.Item>
-                      <Button type="primary" htmlType="submit">查询</Button>
-                    </Form.Item>
+                    <>
+                      <Form.Item>
+                        <Button type="primary" htmlType="submit">查询</Button>
+                      </Form.Item>
+                      <Form.Item>
+                        <Button htmlType="button" onClick={ onReset }>重置</Button>
+                      </Form.Item>
+                    </>
                   ) : null
                 }
               </Form>
@@ -142,9 +150,14 @@ const ZySearchForm = forwardRef((props: Props, ref) => {
               { render }
               {
                 list?.length || render ? (
-                  <Form.Item>
-                    <Button type="primary" htmlType="submit">查询</Button>
-                  </Form.Item>
+                  <>
+                    <Form.Item>
+                      <Button type="primary" htmlType="submit">查询</Button>
+                    </Form.Item>
+                    <Form.Item>
+                      <Button htmlType="button" onClick={ onReset }>重置</Button>
+                    </Form.Item>
+                  </>
                 ) : null
               }
             </Form>
