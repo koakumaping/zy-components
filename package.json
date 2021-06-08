@@ -1,6 +1,6 @@
 {
   "name": "@zy/components-react",
-  "version": "0.4.10",
+  "version": "0.4.11",
   "main": "src/index.ts",
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
@@ -13,20 +13,20 @@
     "@umijs/plugin-sass": "^1.1.1",
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.2.16",
-    "antd": "^4.8.4",
     "compression-webpack-plugin": "^6.0.4",
-    "evian": "^2.1.1",
     "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
-    "react": "^16.12.0",
     "react-beautiful-dnd": "^13.0.0",
     "react-dom": "^16.12.0",
     "sass-resources-loader": "^2.1.0",
     "typescript": "^4.0.5",
-    "umi": "^3.3.7",
     "yorkie": "^2.0.0"
   },
   "devDependencies": {
+    "umi": "^3.3.7",
+    "react": "^16.12.0",
+    "antd": "^4.8.4",
+    "evian": "^2.1.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5"
   }
