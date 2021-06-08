@@ -150,14 +150,9 @@ const ZySearchForm = forwardRef((props: Props, ref) => {
               { render }
               {
                 list?.length || render ? (
-                  <>
-                    <Form.Item>
-                      <Button type="primary" htmlType="submit">查询</Button>
-                    </Form.Item>
-                    <Form.Item>
-                      <Button htmlType="button" onClick={ onReset }>重置</Button>
-                    </Form.Item>
-                  </>
+                  <Form.Item>
+                    <Button type="primary" htmlType="submit">查询</Button>
+                  </Form.Item>
                 ) : null
               }
             </Form>
