@@ -38,10 +38,11 @@ interface Props {
   render?: ReactNode | ReactNode[]
   // 是否独立搜索区
   discrete?: boolean
+  name?: string
 }
 
 const ZySearchForm = forwardRef((props: Props, ref) => {
-  const { items, onFinish, children, render, discrete } = props
+  const { items, onFinish, children, render, discrete, name } = props
   const [formInstance] = Form.useForm()
 
   // 是否独立搜索区
@@ -89,7 +90,7 @@ const ZySearchForm = forwardRef((props: Props, ref) => {
                 form={ formInstance }
                 onFinish={ onFinish }
                 initialValues={ searchQuery }
-                name="discrete"
+                name={ name || 'discrete' }
               >
                 {
                   list?.map(item => (
@@ -132,7 +133,7 @@ const ZySearchForm = forwardRef((props: Props, ref) => {
               form={formInstance}
               onFinish={onFinish}
               initialValues={searchQuery}
-              name="inline"
+              name={ name || 'inline' }
             >
               {
                 list?.map(item => (
