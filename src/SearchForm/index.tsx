@@ -39,10 +39,12 @@ interface Props {
   // 是否独立搜索区
   discrete?: boolean
   name?: string
+  // 重置时额外的数据
+  resetData?: Record<string, any>
 }
 
 const ZySearchForm = forwardRef((props: Props, ref) => {
-  const { items, onFinish, children, render, discrete, name } = props
+  const { items, onFinish, resetData, children, render, discrete, name } = props
   const [formInstance] = Form.useForm()
 
   // 是否独立搜索区
@@ -75,8 +77,17 @@ const ZySearchForm = forwardRef((props: Props, ref) => {
     },
   }))
 
-  const onReset = () => {
-    formInstance.resetFields()
+  const handleReset = () => {
+    const { pathname } = history.location
+    const query = {
+      page: '1'
+    }
+
+    Object.assign(query, resetData || {})
+    history.replace({
+      pathname,
+      query,
+    })
   }
 
   return (
@@ -113,7 +124,7 @@ const ZySearchForm = forwardRef((props: Props, ref) => {
                         <Button type="primary" htmlType="submit">查询</Button>
                       </Form.Item>
                       <Form.Item>
-                        <Button htmlType="button" onClick={ onReset }>重置</Button>
+                        <Button htmlType="button" onClick={ handleReset }>重置</Button>
                       </Form.Item>
                     </>
                   ) : null
