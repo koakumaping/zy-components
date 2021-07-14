@@ -3,11 +3,14 @@ import React, {
   ReactNode,
   useImperativeHandle,
   forwardRef,
+  useState,
+  cloneElement,
 } from 'react'
 import { history } from 'umi'
-import { Form, Button, FormItemProps } from 'antd'
+import { Form, Button, FormItemProps, Row, Col, Space } from 'antd'
 import { queryForm } from 'evian'
 import { Rule } from 'antd/lib/form'
+import { DownOutlined, UpOutlined } from '@ant-design/icons'
 import './index.sass'
 
 interface ColumnItem<RecordType = unknown> {
@@ -38,6 +41,8 @@ interface Props {
   render?: ReactNode | ReactNode[]
   // 是否独立搜索区
   discrete?: boolean
+  // 独立搜索区的栅格
+  span?: number
   name?: string
   // 重置时额外的数据
   resetData?: Record<string, any>
@@ -45,12 +50,16 @@ interface Props {
 
 const ZySearchForm = forwardRef((props: Props, ref) => {
   const { items, onFinish, resetData, children, render, discrete, name } = props
+  const span = props.span || 6
   const [formInstance] = Form.useForm()
 
   // 是否独立搜索区
   const isDiscrete = useMemo(() => {
     return items && items.length > 3 ? true : discrete ? true : render ? true : false
   }, [ discrete ])
+
+  // 是否展开
+  const [ expand, setExpand ] = useState(false)
 
   const list = useMemo(() => {
     return items
@@ -103,32 +112,65 @@ const ZySearchForm = forwardRef((props: Props, ref) => {
                 initialValues={ searchQuery }
                 name={ name || 'discrete' }
               >
-                {
-                  list?.map(item => (
-                    <Form.Item
-                      name={item.dataIndex}
-                      key={item.key || (item.dataIndex as string)}
-                      rules={item.rules || []}
-                      validateTrigger={['onChange', 'onBlur']}
-                      style={{ minWidth: '80px' }}
-                    >
-                      {item.formItem}
-                    </Form.Item>
-                  ))
-                }
-                { render }
-                {
-                  list?.length || render ? (
-                    <>
-                      <Form.Item>
-                        <Button type="primary" htmlType="submit">查询</Button>
-                      </Form.Item>
-                      <Form.Item>
-                        <Button htmlType="button" onClick={ handleReset }>重置</Button>
-                      </Form.Item>
-                    </>
-                  ) : null
-                }
+                <Row style={{ width: '100%' }} gutter={ 16 }>
+                  {
+                    list?.map((item, index) => (
+                      index < (24 / span - 1) ? (
+                        <Col span={ span } key={ item.key || (item.dataIndex as string) }>
+                          <Form.Item
+                            name={ item.dataIndex }
+                            rules={item.rules || []}
+                            validateTrigger={['onChange', 'onBlur']}
+                          >
+                            { item.formItem }
+                          </Form.Item>
+                        </Col>
+                      ) : (
+                        expand === false ? (
+                          <Form.Item
+                            hidden
+                            name={ item.dataIndex }
+                            key={ item.key || (item.dataIndex as string) }
+                            rules={item.rules || []}
+                            validateTrigger={['onChange', 'onBlur']}
+                          >
+                            { item.formItem }
+                          </Form.Item>
+                        ) : (
+                          <Col span={ span } key={ item.key || (item.dataIndex as string) }>
+                            <Form.Item
+                              name={ item.dataIndex }
+                              rules={ item.rules || [] }
+                              validateTrigger={[ 'onChange', 'onBlur' ]}
+                            >
+                              { item.formItem }
+                            </Form.Item>
+                          </Col>
+                        )
+                      )
+                    ))
+                  }
+                  { render }
+                  {
+                    list?.length || render ? (
+                      <Col span={ span } offset={ expand ? ((24 / span - 1) - (list && list.length % (24 / span) || 0)) * span : 0 }>
+                        <Form.Item>
+                          <Space>
+                            <Button type="primary" htmlType="submit">查询</Button>
+                            <Button htmlType="button" onClick={ handleReset }>重置</Button>
+                            <span
+                              className="pointer text-main"
+                              onClick={ () => { setExpand(!expand) } }
+                            >
+                              { expand ? '收起' : '展开' }
+                              { expand ? <UpOutlined /> : <DownOutlined /> }
+                            </span>
+                          </Space>
+                        </Form.Item>
+                        </Col>
+                    ) : null
+                  }
+                </Row>
               </Form>
             </div>
             <div className="search-form__spare"></div>
@@ -141,9 +183,9 @@ const ZySearchForm = forwardRef((props: Props, ref) => {
           <div className="search-form__form">
             <Form
               layout="inline"
-              form={formInstance}
-              onFinish={onFinish}
-              initialValues={searchQuery}
+              form={ formInstance }
+              onFinish={ onFinish }
+              initialValues={ searchQuery }
               name={ name || 'inline' }
             >
               {
@@ -155,7 +197,9 @@ const ZySearchForm = forwardRef((props: Props, ref) => {
                     validateTrigger={['onChange', 'onBlur']}
                     style={{ minWidth: '80px' }}
                   >
-                    {item.formItem}
+                    { cloneElement(item.formItem as any, {
+                      style: { width: item.width || 200 }
+                    }) }
                   </Form.Item>
                 ))
               }
