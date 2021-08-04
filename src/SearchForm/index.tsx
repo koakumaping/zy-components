@@ -55,7 +55,7 @@ const ZySearchForm = forwardRef((props: Props, ref) => {
 
   // 是否独立搜索区
   const isDiscrete = useMemo(() => {
-    return items && items.length > 3 ? true : discrete ? true : render ? true : false
+    return items && items.length > 3 ? true : discrete ? true : render ? false : false
   }, [ discrete ])
 
   // 是否展开
