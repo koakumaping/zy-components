@@ -90,7 +90,6 @@ const ZySearchForm = forwardRef((props: Props, ref) => {
   const handleReset = () => {
     if (onReset) {
       onReset(resetData || {})
-      return
     }
 
     const { pathname } = history.location
