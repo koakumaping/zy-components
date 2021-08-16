@@ -46,10 +46,11 @@ interface Props {
   name?: string
   // 重置时额外的数据
   resetData?: Record<string, any>
+  onReset?: (values: Record<string, any>) => void
 }
 
 const ZySearchForm = forwardRef((props: Props, ref) => {
-  const { items, onFinish, resetData, children, render, discrete, name } = props
+  const { items, onFinish, resetData, children, render, discrete, name, onReset } = props
   const span = props.span || 6
   const [formInstance] = Form.useForm()
 
@@ -87,6 +88,11 @@ const ZySearchForm = forwardRef((props: Props, ref) => {
   }))
 
   const handleReset = () => {
+    if (onReset) {
+      onReset(resetData || {})
+      return
+    }
+
     const { pathname } = history.location
     const query = {
       page: '1'
