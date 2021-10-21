@@ -13,6 +13,7 @@ interface Props {
   placeholder?: string
   picker?: 'time' | 'date' | 'week' | 'month' | 'quarter' | 'year' | undefined
   allowClear?: boolean
+  showTime?: any
 }
 
 const ZyDatePicker: React.FC<Props> = props => {
@@ -25,6 +26,7 @@ const ZyDatePicker: React.FC<Props> = props => {
     placeholder,
     picker,
     allowClear,
+    showTime,
   } = props
 
   const triggerChange = (changedValue: Moment | null) => {
@@ -43,6 +45,7 @@ const ZyDatePicker: React.FC<Props> = props => {
       placeholder={ placeholder }
       picker={ picker }
       allowClear={ allowClear }
+      showTime={ showTime }
     />
   )
 }
