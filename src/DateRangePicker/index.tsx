@@ -14,10 +14,11 @@ interface Props {
   allowClear?: boolean
   placeholder?: [string, string]
   showTime?: any
+  disabled?: boolean
 }
 
 const ZyDateRangePicker: React.FC<Props> = props => {
-  const { value, onChange, style, format, disabledDate, allowClear, placeholder, showTime } = props
+  const { value, onChange, style, format, disabledDate, allowClear, placeholder, showTime, disabled } = props
   const triggerChange = (changedValue: RangeValue<Moment>) => {
     console.log(changedValue)
     if (onChange) {
@@ -46,6 +47,7 @@ const ZyDateRangePicker: React.FC<Props> = props => {
       disabledDate={ disabledDate }
       placeholder={ placeholder }
       showTime={ showTime }
+      disabled={ disabled }
     />
   )
 }

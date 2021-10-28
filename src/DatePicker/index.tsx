@@ -14,6 +14,7 @@ interface Props {
   picker?: 'time' | 'date' | 'week' | 'month' | 'quarter' | 'year' | undefined
   allowClear?: boolean
   showTime?: any
+  disabled?: boolean
 }
 
 const ZyDatePicker: React.FC<Props> = props => {
@@ -27,6 +28,7 @@ const ZyDatePicker: React.FC<Props> = props => {
     picker,
     allowClear,
     showTime,
+    disabled
   } = props
 
   const triggerChange = (changedValue: Moment | null) => {
@@ -46,6 +48,7 @@ const ZyDatePicker: React.FC<Props> = props => {
       picker={ picker }
       allowClear={ allowClear }
       showTime={ showTime }
+      disabled={ disabled }
     />
   )
 }
