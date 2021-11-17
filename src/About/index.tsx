@@ -23,7 +23,6 @@ const About: React.FC<Prop> = (prop) => {
         <p>版本 { prop.version }</p>
         <p>版权所有 ©浙江正元智慧科技股份有限公司</p>
         <p>技术支持 浙江正元智慧科技股份有限公司</p>
-        <p>备案号 浙ICP备10007294号-5</p>
       </div>
     </Modal>
   )
