@@ -1,6 +1,6 @@
 {
   "name": "@zy/components-react",
-  "version": "0.4.25",
+  "version": "0.4.27",
   "main": "src/index.ts",
   "dependencies": {
     "@ant-design/icons": "^4.2.2",

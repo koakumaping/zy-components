@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import { Layout } from 'antd'
 import defaultLogo from './image/logo.png'
+import './index.sass'
 
 const { Header } = Layout
 
@@ -9,13 +10,20 @@ interface Props {
   logo?: string
   children?: ReactNode | ReactNode[]
   style?: React.CSSProperties
+  loading?: boolean
 }
 
-const ZyHeader: React.FC<Props> = ({title, logo, children}) => {
+const ZyHeader: React.FC<Props> = ({title, logo, loading, children}) => {
   return (
     <Header className="header">
       <div className="left header-logo">
-        <img src={ logo || defaultLogo } alt="logo" />
+        {
+          loading ? (
+            <div className="logo-space"></div>
+          ) : (
+            <img src={ logo || defaultLogo } alt="logo" />
+          )
+        }
         <span>{ title }</span>
       </div>
       { children }
