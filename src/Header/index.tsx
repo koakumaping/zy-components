@@ -1,23 +1,24 @@
 import React, { ReactNode } from 'react'
 import { Layout } from 'antd'
-import logo from './image/logo.png'
+import defaultLogo from './image/logo.png'
 
 const { Header } = Layout
 
 interface Props {
   title: string | ReactNode | ReactNode[]
+  logo?: string
   children?: ReactNode | ReactNode[]
   style?: React.CSSProperties
 }
 
-const ZyHeader: React.FC<Props> = props => {
+const ZyHeader: React.FC<Props> = ({title, logo, children}) => {
   return (
     <Header className="header">
       <div className="left header-logo">
-        <img src={ logo } alt="logo" />
-        <span>{ props.title }</span>
+        <img src={ logo || defaultLogo } alt="logo" />
+        <span>{ title }</span>
       </div>
-      { props.children }
+      { children }
     </Header>
   )
 }
