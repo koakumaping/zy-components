@@ -8,7 +8,7 @@ interface Props {
   children?: React.ReactNode | React.ReactNode[]
 }
 
-const PageHeader: React.FC<Props> = (props) => {
+const ZyPageHeader: React.FC<Props> = (props) => {
   return (
     <div className="zy-page-header">
       <div className="zy-page-header-heading">
@@ -30,4 +30,4 @@ const PageHeader: React.FC<Props> = (props) => {
   )
 }
 
-export default PageHeader
+export default ZyPageHeader

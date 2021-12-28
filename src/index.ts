@@ -11,6 +11,7 @@ import ZyLogin from './Login'
 import ZyTable from './Table'
 import ZyModalconfirm from './Modalconfirm'
 import ZyAbout from './About'
+import ZyPageHeader from './PageHeader'
 
 export {
   ZyDatePicker,
@@ -25,4 +26,5 @@ export {
   ZyTable,
   ZyModalconfirm,
   ZyAbout,
+  ZyPageHeader,
 }
