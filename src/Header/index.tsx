@@ -15,7 +15,7 @@ interface Props {
 
 const ZyHeader: React.FC<Props> = ({title, logo, loading, children}) => {
   return (
-    <Header className="header">
+    <Header className="zy-header">
       <div className="left header-logo">
         {
           loading ? (
