@@ -10,7 +10,7 @@ interface Props {
 const ZyImage: React.FC<Props> = props => {
   return (
     <img
-      src={ props.src }
+      src={ props.src || errorImage }
       alt={ props.alt }
       style={ props.style }
       onError={(e: any) => {
