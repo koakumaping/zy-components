@@ -182,7 +182,9 @@ const ZySearchForm = forwardRef((props: Props, ref) => {
           </>
         ) : null
       }
-      <div className="search-form__actions">{ children }</div>
+      {
+        children ? <div className="search-form__actions">{ children }</div> : null
+      }
       {
         isDiscrete ? null : (
           <div className="search-form__form">
