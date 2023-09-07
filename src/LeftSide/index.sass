@@ -31,6 +31,7 @@
   .ant-layout-sider-trigger
     background: #001529
   .zy-side-footer
+    font-size: 16px
     height: 48px
     position: absolute
     left: 0
@@ -51,6 +52,16 @@
   margin-left: 8px!important
 
 .ant-menu-dark
+  .ant-menu-item
+    color: rgba(255, 255, 255, 0.75)
   &.ant-menu-inline-collapsed
     .ant-menu-submenu-selected
       background-color: #0084ff
+  &.ant-menu-vertical
+    > .ant-menu-item
+      height: 48px
+      width: 48px
+      margin-top: 0
+      margin-bottom: 0
+    > .ant-menu-item:not(:last-child)
+      margin-bottom: 0

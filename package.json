@@ -1,6 +1,6 @@
 {
   "name": "@zy/components-react",
-  "version": "0.4.40",
+  "version": "0.4.44",
   "main": "src/index.ts",
   "dependencies": {},
   "devDependencies": {
