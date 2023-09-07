@@ -13,6 +13,9 @@ import ZyModalconfirm from './Modalconfirm'
 import ZyAbout from './About'
 import ZyPageHeader from './PageHeader'
 
+// icon
+import ZyIconDrop from './Icon/drop'
+
 export {
   ZyDatePicker,
   ZyDateRangePicker,
@@ -27,4 +30,5 @@ export {
   ZyModalconfirm,
   ZyAbout,
   ZyPageHeader,
+  ZyIconDrop,
 }

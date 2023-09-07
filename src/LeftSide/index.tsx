@@ -10,14 +10,23 @@ const ZyLeftSide: React.FC = props => {
   }
 
   return (
-    <Layout.Sider style={{ overflow: 'auto', zIndex: 1 }} width={208} trigger={null} collapsible collapsed={collapsed}>
-      {
-        React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-          className: 'zy-side-trigger',
-          onClick: toggleCollapsed,
-        })
-      }
+    <Layout.Sider
+      style={{ zIndex: 1 }}
+      width={ 208 }
+      trigger={ null }
+      collapsible
+      collapsed={ collapsed }
+      collapsedWidth={ 48 }
+    >
       { props.children }
+      <div className="zy-side-footer">
+        {
+          React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+            className: 'zy-side-trigger',
+            onClick: toggleCollapsed,
+          })
+        }
+      </div>
     </Layout.Sider>
   )
 }
