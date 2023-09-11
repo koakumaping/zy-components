@@ -11,7 +11,7 @@ const ZyLeftSide: React.FC = props => {
 
   return (
     <Layout.Sider
-      style={{ zIndex: 1 }}
+      style={{ zIndex: 2 }}
       width={ 208 }
       trigger={ null }
       collapsible
