@@ -5,6 +5,8 @@ import moment, { Moment } from 'moment'
 import './index.sass'
 
 declare type ValueItem = [string, string] | null
+declare type PanelMode = 'time' | 'date' | 'week' | 'month' | 'quarter' | 'year' | 'decade'
+
 interface Props {
   value?: ValueItem
   onChange?: (value: ValueItem) => void
@@ -16,10 +18,11 @@ interface Props {
   showTime?: any
   disabled?: boolean
   ranges?: Record<string, Exclude<RangeValue<moment.Moment>, null> | (() => Exclude<RangeValue<moment.Moment>, null>)>
+  renderExtraFooter?: (mode: PanelMode) => React.ReactNode
 }
 
 const ZyDateRangePicker: React.FC<Props> = props => {
-  const { value, onChange, style, format, ranges, disabledDate, allowClear, placeholder, showTime, disabled } = props
+  const { value, onChange, style, format, ranges, disabledDate, allowClear, placeholder, showTime, disabled, renderExtraFooter } = props
   const triggerChange = (changedValue: RangeValue<Moment>) => {
     console.log(changedValue)
     if (onChange) {
@@ -50,6 +53,7 @@ const ZyDateRangePicker: React.FC<Props> = props => {
       showTime={ showTime }
       disabled={ disabled }
       ranges={ ranges }
+      renderExtraFooter={ renderExtraFooter }
     />
   )
 }
