@@ -18,21 +18,26 @@
       font-weight: bold
       padding-left: 16px
   .header-avater
-    display: inline-block
-    vertical-align: top
+    display: flex
     margin-left: 16px
-    .ant-avatar
-      margin-top: -2px
+    float: left
+    align-items: center
+    flex-wrap: nowrap
+    height: 64px
   .header-name
-    font-size: 16px
-    display: inline-block
     padding: 0 8px
-    max-width: 140px
-    overflow: hidden
-    text-overflow: ellipsis
-    white-space: nowrap
+    height: 64px
+    float: left
+    display: flex
+    flex-wrap: nowrap
+    align-items: center
+    div
+      max-width: 140px
+      overflow: hidden
+      text-overflow: ellipsis
+      white-space: nowrap
+      font-size: 16px
     svg
-      vertical-align: middle
       margin-left: 8px
   .header-action
     height: 16px
