@@ -15,6 +15,7 @@ import ZyPageHeader from './PageHeader'
 
 // icon
 import ZyIconDrop from './Icon/drop'
+import ZyIcon from './Icon/index'
 
 export {
   ZyDatePicker,
@@ -31,4 +32,5 @@ export {
   ZyAbout,
   ZyPageHeader,
   ZyIconDrop,
+  ZyIcon,
 }
