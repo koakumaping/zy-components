@@ -24,7 +24,11 @@ const ZyHeader: React.FC<Props> = ({title, logo, loading, children}) => {
             <img src={ logo || defaultLogo } alt="logo" />
           )
         }
-        <span>{ title }</span>
+        {
+          loading ? null : (
+            <span>{ title }</span>
+          )
+        }
       </div>
       { children }
     </Header>
